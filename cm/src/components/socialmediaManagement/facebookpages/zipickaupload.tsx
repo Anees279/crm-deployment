@@ -49,7 +49,7 @@ const FileUpload: React.FC = () => {
       setUploadStatus('');
 
       // Send POST request to the API to upload files and post details
-      await axios.post('http://localhost:5000/api/posts/media', formData, {
+      await axios.post('https://crm-deployment-five.vercel.app/api/posts/media', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

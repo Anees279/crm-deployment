@@ -23,7 +23,7 @@ const ClientList: React.FC = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/clients');
+        const response = await axios.get('https://crm-deployment-five.vercel.app/api/clients');
         setClients(response.data);
         setLoading(false);
       } catch (error) {

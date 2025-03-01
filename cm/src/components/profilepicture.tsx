@@ -26,7 +26,7 @@ const handleProfilePictureUpload = async (
     }
 
     // Perform the file upload to the server
-    const response = await axios.put('http://localhost:5000/api/profile-picture', formData, {
+    const response = await axios.put('https://crm-deployment-five.vercel.app/api/profile-picture', formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',

@@ -16,7 +16,7 @@ const Visaprocessing: React.FC = () => {
 
   useEffect(() => {
     // Fetch posts from the API
-    axios.get('http://localhost:5000/api/visaprocessing/posts')
+    axios.get('https://crm-deployment-five.vercel.app/api/visaprocessing/posts')
       .then(response => {
         if (response.data && response.data.data) {
           setPosts(response.data.data);
@@ -26,12 +26,12 @@ const Visaprocessing: React.FC = () => {
       .catch(error => console.error('Error fetching posts:', error));
 
     // Fetch followers count from the API
-    axios.get('http://localhost:5000/api/visaprocessing/followers')
+    axios.get('https://crm-deployment-five.vercel.app/api/visaprocessing/followers')
       .then(response => setFollowersCount(response.data.followersCount))
       .catch(error => console.error('Error fetching followers count:', error));
 
     // Fetch page analytics from the API
-    axios.get('http://localhost:5000/api/visaprocessing/getPageAnalytics')
+    axios.get('https://crm-deployment-five.vercel.app/api/visaprocessing/getPageAnalytics')
       .then(response => setPageAnalytics(response.data.analytics))
       .catch(error => console.error('Error fetching page analytics:', error));
   }, []);
@@ -66,7 +66,7 @@ const Visaprocessing: React.FC = () => {
 
   const fetchLikes = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/visaprocessing/posts/${postId}/likes`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/visaprocessing/posts/${postId}/likes`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching likes:', error);
@@ -76,7 +76,7 @@ const Visaprocessing: React.FC = () => {
 
   const fetchComments = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/visaprocessing/posts/${postId}/comments`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/visaprocessing/posts/${postId}/comments`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching comments:', error);

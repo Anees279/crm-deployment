@@ -49,7 +49,7 @@ const RealestateUpload: React.FC = () => {
       setUploadStatus('');
 
       // Send POST request to the API to upload files and post details
-      const response = await axios.post('http://localhost:5000/api/realestategpost/posts/media', formData, {
+      const response = await axios.post('https://crm-deployment-five.vercel.app/api/realestategpost/posts/media', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

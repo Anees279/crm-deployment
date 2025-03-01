@@ -36,7 +36,7 @@ const InstagramInsights: React.FC = () => {
   useEffect(() => {
     const fetchInstagramData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/instagram/insights'); // replace with your backend endpoint
+        const response = await axios.get('https://crm-deployment-five.vercel.app/api/instagram/insights'); // replace with your backend endpoint
         setData(response.data);
         setLoading(false);
       } catch (err) {

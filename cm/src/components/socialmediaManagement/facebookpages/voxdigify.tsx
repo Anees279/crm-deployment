@@ -14,7 +14,7 @@ const Voxdigify: React.FC = () => {
   const [pageAnalytics, setPageAnalytics] = useState<any>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/voxdigify/posts')
+    axios.get('https://crm-deployment-five.vercel.app/api/voxdigify/posts')
       .then(response => {
         if (response.data && response.data.data) {
           setPosts(response.data.data);
@@ -22,11 +22,11 @@ const Voxdigify: React.FC = () => {
       })
       .catch(error => console.error('Error fetching posts:', error));
 
-    axios.get('http://localhost:5000/api/voxdigify/followers')
+    axios.get('https://crm-deployment-five.vercel.app/api/voxdigify/followers')
       .then(response => setFollowersCount(response.data.followersCount))
       .catch(error => console.error('Error fetching followers count:', error));
 
-    axios.get('http://localhost:5000/api/voxdigify/getPageAnalytics')
+    axios.get('https://crm-deployment-five.vercel.app/api/voxdigify/getPageAnalytics')
       .then(response => setPageAnalytics(response.data.analytics))
       .catch(error => console.error('Error fetching page analytics:', error));
   }, []);
@@ -56,7 +56,7 @@ const Voxdigify: React.FC = () => {
 
   const fetchLikes = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/voxdigify/posts/${postId}/likes`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/voxdigify/posts/${postId}/likes`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching likes:', error);
@@ -66,7 +66,7 @@ const Voxdigify: React.FC = () => {
 
   const fetchComments = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/voxdigify/posts/${postId}/comments`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/voxdigify/posts/${postId}/comments`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching comments:', error);

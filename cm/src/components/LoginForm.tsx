@@ -25,7 +25,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onLogin, setIsSignUp, isSign
     if (!isSignUp) {
       try {
         // Adjusting API call to properly handle response structure
-        const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+        const response = await axios.post('https://crm-deployment-five.vercel.app/auth/login', { email, password });
 
         if (response.data.token && response.data.user) {
           // Save the token and user data in localStorage

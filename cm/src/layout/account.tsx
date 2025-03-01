@@ -41,7 +41,7 @@ const ClientData: React.FC<ClientDataProps> = ({ editable }) => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/clients');
+        const response = await axios.get('https://crm-deployment-five.vercel.app/api/clients');
         const sortedData = response.data.sort((a: TableRow, b: TableRow) => new Date(b._id).getTime() - new Date(a._id).getTime()); // Sort by recent
         setTableData(sortedData);
       } catch (err) {
@@ -61,7 +61,7 @@ const ClientData: React.FC<ClientDataProps> = ({ editable }) => {
   const addRow = async () => {
     if (newRow.accountName && newRow.phone && newRow.website && newRow.accountOwner) {
       try {
-        const response = await axios.post('http://localhost:5000/api/clients', newRow);
+        const response = await axios.post('https://crm-deployment-five.vercel.app/api/clients', newRow);
         setTableData((prevTableData) => [response.data, ...prevTableData]); // Add the new row to the top
         setNewRow({ accountName: "", phone: "", website: "", accountOwner: "", _id: "" });
       } catch (err) {
@@ -73,7 +73,7 @@ const ClientData: React.FC<ClientDataProps> = ({ editable }) => {
   // Delete a row from the table by ID
   const deleteRow = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(`https://crm-deployment-five.vercel.app/api/clients/${id}`);
       setTableData((prevTableData) => prevTableData.filter((row) => row._id !== id));
     } catch (err) {
       console.error('Error deleting client:', err);

@@ -15,7 +15,7 @@ const FacebookPageDashboard: React.FC = () => {
 
   // Fetch Posts, Likes, Comments, Followers Count, and Insights
   useEffect(() => {
-    axios.get('http://localhost:5000/api/facebook/posts')
+    axios.get('https://crm-deployment-five.vercel.app/api/facebook/posts')
       .then(response => {
         if (response.data && response.data.data) {
           setPosts(response.data.data);
@@ -25,7 +25,7 @@ const FacebookPageDashboard: React.FC = () => {
         console.error('Error fetching posts:', error);
       });
 
-    axios.get('http://localhost:5000/api/facebook/followers')
+    axios.get('https://crm-deployment-five.vercel.app/api/facebook/followers')
       .then(response => {
         setFollowersCount(response.data.followersCount);
       })
@@ -33,7 +33,7 @@ const FacebookPageDashboard: React.FC = () => {
         console.error('Error fetching followers count:', error);
       });
 
-    axios.get('http://localhost:5000/api/facebook/getPageAnalytics')
+    axios.get('https://crm-deployment-five.vercel.app/api/facebook/getPageAnalytics')
       .then(response => {
         setPageAnalytics(response.data.analytics);
       })
@@ -67,7 +67,7 @@ const FacebookPageDashboard: React.FC = () => {
 
   const fetchLikes = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/facebook/posts/${postId}/likes`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/facebook/posts/${postId}/likes`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching likes:', error);
@@ -77,7 +77,7 @@ const FacebookPageDashboard: React.FC = () => {
 
   const fetchComments = async (postId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/facebook/posts/${postId}/comments`);
+      const response = await axios.get(`https://crm-deployment-five.vercel.app/api/facebook/posts/${postId}/comments`);
       return response.data.data.length;
     } catch (error) {
       console.error('Error fetching comments:', error);
