@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "target": "es5", 
+      "types": ["jest", "node"],// Transpile to ES5 for browser compatibility
+      "lib": ["dom", "dom.iterable", "esnext"], // Include necessary libraries (DOM, ESNext features)
+      "allowJs": true, // Allow JavaScript files alongside TypeScript files
+      "skipLibCheck": true, // Skip type checking of declaration files
+      "esModuleInterop": true, // Enable compatibility with CommonJS modules
+      "allowSyntheticDefaultImports": true, // Allow default imports for non-default export modules
+      "strict": true, // Enable strict type-checking options for better safety
+      "forceConsistentCasingInFileNames": true, // Ensure file names are case-sensitive
+      "module": "esnext", // Use the latest ECMAScript module system
+      "moduleResolution": "node", // Resolve modules like Node.js
+      "resolveJsonModule": true, // Allow importing JSON files as modules
+      "isolatedModules": true, // Ensure files can be treated as isolated modules (for bundlers)
+      "jsx": "react-jsx", // Use the new JSX transform (React 17 and beyond)
+      "noEmit": true // Do not emit JavaScript files (useful when using Babel/webpack for compiling)
+      
+    },
+    "paths": {
+      "*": ["node_modules/*", "src/*"]
+    },
+    "include": [
+      "src" ,// Include all files inside the src folder
+      "src/types/**/*.d.ts"
+    ],
+    "exclude": [
+      "node_modules" // Exclude the node_modules folder
+    ]
+  }
+  
