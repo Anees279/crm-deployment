@@ -36,7 +36,7 @@ const AdminPanel: React.FC = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:5000/auth/users', {
+        const response = await axios.get('https://crm-deployment-five.vercel.app/auth/users', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(response.data);
@@ -63,7 +63,7 @@ const AdminPanel: React.FC = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/auth/user/${userId}/role`,
+        `https://crm-deployment-five.vercel.app/auth/user/${userId}/role`,
         { role: newRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -95,7 +95,7 @@ const AdminPanel: React.FC = () => {
         return;
       }
 
-      const response = await axios.delete(`http://localhost:5000/auth/user/${userId}`, {
+      const response = await axios.delete(`https://crm-deployment-five.vercel.app/auth/user/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

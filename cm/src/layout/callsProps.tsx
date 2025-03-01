@@ -25,7 +25,7 @@ export const CallData: React.FC = () => {
   useEffect(() => {
     const fetchCalls = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/calls");
+        const response = await axios.get("https://crm-deployment-five.vercel.app/api/calls");
         const sortedCalls = response.data.sort(
           (a: CallData, b: CallData) =>
             new Date(b.callStartTime).getTime() - new Date(a.callStartTime).getTime()

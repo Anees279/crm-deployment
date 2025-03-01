@@ -32,7 +32,7 @@ export const Lead = () => {
   // Fetch leads from API
   const fetchLeads = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/leads');
+      const response = await axios.get('https://crm-deployment-five.vercel.app/api/leads');
       setLeads(response.data);
     } catch (error) {
       console.error('Error fetching leads:', error);
@@ -59,7 +59,7 @@ export const Lead = () => {
       newLead.owner
     ) {
       try {
-        const response = await axios.post('http://localhost:5000/api/leads', newLead);
+        const response = await axios.post('https://crm-deployment-five.vercel.app/api/leads', newLead);
         setLeads([response.data, ...leads]); // Add the new lead at the top
         setNewLead({
           name: '',
@@ -77,7 +77,7 @@ export const Lead = () => {
 
   const handleDeleteLead = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/leads/${id}`);
+      await axios.delete(`https://crm-deployment-five.vercel.app/api/leads/${id}`);
       setLeads(leads.filter((lead) => lead._id !== id));
     } catch (error) {
       console.error('Error deleting lead:', error);

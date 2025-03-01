@@ -24,7 +24,7 @@ const MeetingsList: React.FC = () => {
   useEffect(() => {
     const fetchMeetings = async () => {
       try {
-        const response = await axios.get<Meeting[]>('http://localhost:5000/api/meetings'); // Typed axios call
+        const response = await axios.get<Meeting[]>('https://crm-deployment-five.vercel.app/api/meetings'); // Typed axios call
         setMeetings(response.data);
         setLoading(false);
       } catch (err: any) { // Handling potential errors

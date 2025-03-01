@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:5000/auth/profile', {
+        const response = await axios.get('https://crm-deployment-five.vercel.app/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -59,7 +59,7 @@ const Profile: React.FC = () => {
 
       // Send the uploaded image URL to the backend
       const response = await axios.put(
-        'http://localhost:5000/api/profile-picture',
+        'https://crm-deployment-five.vercel.app/api/profile-picture',
         { profilePicture: imageUrl },
         {
           headers: {
