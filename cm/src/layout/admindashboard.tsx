@@ -36,7 +36,7 @@ const AdminPanel: React.FC = () => {
           return;
         }
 
-        const response = await axios.get('https://crm-deployment-five.vercel.app/auth/users/auth/users', {
+        const response = await axios.get('https://crm-deployment-five.vercel.app/auth/users', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(response.data);
