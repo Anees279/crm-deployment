@@ -3,8 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import expressSession from 'express-session';
 import flash from 'connect-flash';
-import './config/passport.config';
 import passport from 'passport';
+import MongoStore from 'connect-mongo';
+import './config/passport.config';
 import facebookRouter from './routes/facebook/zipickaget';
 import voxidigify from './routes/facebook/voxdigifyget';
 import Jurisprime from './routes/facebook/jurisprimeget';
@@ -35,6 +36,7 @@ import bussinesspost from './routes/facebook/bussiness';
 
 // Instagram
 import insta from './routes/instagram/authRoutes';
+
 dotenv.config(); // Load environment variables
 
 const app: Application = express();
@@ -43,16 +45,31 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
+// Determine if the environment is production or development
+const isProduction = process.env.NODE_ENV === 'production';
+
 // Session and Flash middleware
 app.use(expressSession({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
   saveUninitialized: false,
+  store: isProduction
+    ? MongoStore.create({
+        mongoUrl: process.env.MONGO_URL || 'mongodb+srv://anees:Anees279%40@cluster0.1jchs.mongodb.net/anees',
+        ttl: 14 * 24 * 60 * 60, // 14 days expiration
+      })
+    : undefined, // Use MemoryStore in development
+  cookie: {
+    secure: isProduction, // Only send secure cookies in production
+    maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days in milliseconds
+  }
 }));
+
 app.use(flash());
 
 // Passport middleware
 app.use(passport.initialize());
+app.use(passport.session());  // Add session management for passport
 
 // Flash messages available globally
 app.use((req, res, next) => {
